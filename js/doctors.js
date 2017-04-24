@@ -11,7 +11,7 @@ $(document).ready(function() {
     }).done(function(doctors){
         for(var i = 0; i < doctors.length; i++){
             $('.doctors').append("<tr>" +
-                "<td>"+doctors[i].surname+"</td>" +
+                "<td><p class='name' id='" + doctors[i].id + "'>"+doctors[i].surname+"</p></td>" +
                 "<td>"+doctors[i].name+"</td>" +
                 "<td>"+doctors[i].patronymic+"</td>" +
                 "<td>"+doctors[i].specialization+"</td>" +
@@ -21,6 +21,10 @@ $(document).ready(function() {
                 "</tr>");
         }
         $('.name').click(function(event, ui){
+            console.log("choose");
+            document.cookie = "doctorId=" + $(this).attr('id');
+            document.cookie = "title=" + $(this).html();
+            window.location.href = "timetable.html";
         });
     }).fail(function(){
         console.log("no");
