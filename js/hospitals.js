@@ -1,4 +1,16 @@
 $(document).ready(function() {
+    var token = getCookie("token");
+    var status = getCookie("status");
+    if(token == null || token == ""){
+        document.getElementById("create").style.display = "none";
+        document.getElementById("auth").style.display = "";
+    } else if(status == "1"){
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("create").style.display = "";
+    } else {
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("create").style.display = "none";
+    }
     var cityId = getCookie("cityId");
     var title = getCookie("title");
     $('.high').append(title);

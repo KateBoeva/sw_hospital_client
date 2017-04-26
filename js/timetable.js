@@ -1,4 +1,16 @@
 $(document).ready(function() {
+    var token = getCookie("token");
+    var status = getCookie("status");
+    if(token == null || token == ""){
+        document.getElementById("create").style.display = "none";
+        document.getElementById("auth").style.display = "";
+    } else if(status == "1"){
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("create").style.display = "";
+    } else {
+        document.getElementById("auth").style.display = "none";
+        document.getElementById("create").style.display = "none";
+    }
     var cityId = getCookie("cityId");
     var hospitalId = getCookie("hospitalId");
     var doctorId = getCookie("doctorId");
@@ -8,7 +20,9 @@ $(document).ready(function() {
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-1.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable"
+        data: JSON.stringify("edfvdgf"),
+        contentType:'application/json; charset=utf-8',
+        url: "http://localhost:8080/semestr-1-1.0-SNAPSHOT/timetable/" + doctorId + "/" + token
     }).done(function(timetable){
         $('.timetable').append("<tr>" +
             "<td>"+timetable.monday+"</td>" +
