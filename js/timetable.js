@@ -3,26 +3,29 @@ $(document).ready(function() {
     var status = getCookie("status");
     if(token == null || token == ""){
         document.getElementById("create").style.display = "none";
+        document.getElementById("logout").style.display = "none";
         document.getElementById("auth").style.display = "";
     } else if(status == "1"){
         document.getElementById("auth").style.display = "none";
+        document.getElementById("logout").style.display = "";
         document.getElementById("create").style.display = "";
     } else {
         document.getElementById("auth").style.display = "none";
+        document.getElementById("logout").style.display = "";
         document.getElementById("create").style.display = "none";
     }
     var cityId = getCookie("cityId");
     var hospitalId = getCookie("hospitalId");
     var doctorId = getCookie("doctorId");
     var title = getCookie("title");
-    $('.high').append(title);
+    $('#high').append(title);
     $.ajax({
         method: "GET",
         crossOrigin: true,
         datatype:"json",
         data: JSON.stringify("edfvdgf"),
         contentType:'application/json; charset=utf-8',
-        url: "http://localhost:8080/semestr-1-1.0-SNAPSHOT/timetable/" + doctorId + "/" + token
+        url: "http://localhost:8080/semestr-1-2.0-SNAPSHOT/timetable/" + doctorId + "/" + token
     }).done(function(timetable){
         $('.timetable').append("<tr>" +
             "<td>"+timetable.monday+"</td>" +
@@ -35,6 +38,10 @@ $(document).ready(function() {
             "</tr>");
     }).fail(function(){
         console.log("no");
+    });
+    $('.logout').click(function(event, ui){
+        console.log("choose");
+        window.location.href = "cities.html";
     });
 });
 

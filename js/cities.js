@@ -3,12 +3,15 @@ $(document).ready(function() {
     var status = getCookie("status");
     if(token == null || token == ""){
         document.getElementById("create").style.display = "none";
+        document.getElementById("logout").style.display = "none";
         document.getElementById("auth").style.display = "";
     } else if(status == "1"){
         document.getElementById("auth").style.display = "none";
+        document.getElementById("logout").style.display = "";
         document.getElementById("create").style.display = "";
     } else {
         document.getElementById("auth").style.display = "none";
+        document.getElementById("logout").style.display = "";
         document.getElementById("create").style.display = "none";
     }
 
@@ -16,7 +19,7 @@ $(document).ready(function() {
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-1.0-SNAPSHOT/health/cities"
+        url: "http://localhost:8080/semestr-1-2.0-SNAPSHOT/health/cities"
     }).done(function(cities){
         for(var i = 0; i < cities.length; i++){
             $('.cities').append("<tr>" +
@@ -31,6 +34,10 @@ $(document).ready(function() {
         });
     }).fail(function(){
         console.log("no");
+    });
+    $('.logout').click(function(event, ui){
+        console.log("choose");
+        window.location.href = "cities.html";
     });
 });
 
