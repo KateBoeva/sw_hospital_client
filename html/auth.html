@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Авторизация</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/auth.js"></script>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,20 +15,20 @@
     </div>
 </header>
 <br>
-<form class="all_form">
+<div class="all_form">
     <table class="all_table">
         <tr>
             <td>Логин:</td>
-            <td><input type="text"></td>
+            <td><input class="login" type="text"></td>
         </tr>
         <tr>
             <td>Пароль</td>
-            <td><input type="password"></td>
+            <td><input class="password" type="password"></td>
         </tr>
     </table>
     <br>
-    <input type="submit" value="Войти">
-</form>
-<a href="registr.html" id="registr" class="addCity"><button class="create_btn">Registrtion</button></a>
+    <input class="auth" type="submit" value="Войти">
+</div>
+<a href="register.html" id="register" class="addCity"><button class="create_btn">Registrtion</button></a>
 </body>
 </html>

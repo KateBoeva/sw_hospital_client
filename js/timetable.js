@@ -2,17 +2,7 @@ $(document).ready(function() {
     var token = getCookie("token");
     var status = getCookie("status");
     if(token == null || token == ""){
-        document.getElementById("create").style.display = "none";
-        document.getElementById("logout").style.display = "none";
-        document.getElementById("auth").style.display = "";
-    } else if(status == "1"){
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("logout").style.display = "";
-        document.getElementById("create").style.display = "";
-    } else {
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("logout").style.display = "";
-        document.getElementById("create").style.display = "none";
+        window.location.href = "auth.html";
     }
     var cityId = getCookie("cityId");
     var hospitalId = getCookie("hospitalId");
@@ -39,8 +29,12 @@ $(document).ready(function() {
     }).fail(function(){
         console.log("no");
     });
-    $('.logout').click(function(event, ui){
-        console.log("choose");
+    $('#logout').click(function(event, ui){
+        document.cookie = "cityId=";
+        document.cookie = "hospitalId=";
+        document.cookie = "doctorId=";
+        document.cookie = "token=";
+        document.cookie = "status=";
         window.location.href = "cities.html";
     });
 });

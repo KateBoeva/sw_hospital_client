@@ -14,7 +14,9 @@ $(document).ready(function() {
         document.getElementById("logout").style.display = "";
         document.getElementById("create").style.display = "none";
     }
-
+    document.cookie = "cityId=";
+    document.cookie = "hospitalId=";
+    document.cookie = "doctorId=";
     $.ajax({
         method: "GET",
         crossOrigin: true,
@@ -35,8 +37,12 @@ $(document).ready(function() {
     }).fail(function(){
         console.log("no");
     });
-    $('.logout').click(function(event, ui){
-        console.log("choose");
+    $('#logout').click(function(event, ui){
+        document.cookie = "cityId=";
+        document.cookie = "hospitalId=";
+        document.cookie = "doctorId=";
+        document.cookie = "token=";
+        document.cookie = "status=";
         window.location.href = "cities.html";
     });
 });
