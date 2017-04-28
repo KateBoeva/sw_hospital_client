@@ -39,7 +39,7 @@ function getTimetable(){
         datatype:"json",
         data: JSON.stringify(token),
         contentType:'application/json; charset=utf-8',
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/timetable/" + doctorId + "?token=" + token
+        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token
     }).done(function(timetable){
         $('.monday').val(timetable.monday);
         $('.tuesday').val(timetable.tuesday);
@@ -59,7 +59,7 @@ function change() {
         crossOrigin: true,
         datatype:"json",
         crossDomain: true,
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/admin/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token,
+        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token,
         data: JSON.stringify(timetable),
         contentType:'application/json; charset=utf-8'
     }).done(function(){
