@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить расписание</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/timetable_change.js"></script>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -13,39 +15,39 @@
     </div>
 </header>
 <br>
-<form class="all_form">
+<div class="all_form">
     <table class="all_table">
         <tr>
             <td>Понедельник:</td>
-            <td><input type="text"></td>
+            <td><input class="monday" type="text"></td>
         </tr>
         <tr>
             <td>Вторник:</td>
-            <td><input type="text"></td>
+            <td><input class="tuesday" type="text"></td>
         </tr>
         <tr>
             <td>Среда:</td>
-            <td><input type="text"></td>
+            <td><input class="wednesday" type="text"></td>
         </tr>
         <tr>
             <td>Четверг:</td>
-            <td><input type="text"></td>
+            <td><input class="thursday" type="text"></td>
         </tr>
         <tr>
             <td>Пятница:</td>
-            <td><input type="text"></td>
+            <td><input class="friday" type="text"></td>
         </tr>
         <tr>
             <td>Суббота:</td>
-            <td><input type="text"></td>
+            <td><input class="saturday" type="text"></td>
         </tr>
         <tr>
             <td>Воскресенье:</td>
-            <td><input type="text"></td>
+            <td><input class="sunday" type="text"></td>
         </tr>
     </table>
     <br>
-    <input type="submit" value="Добавить">
-</form>
+    <input class="change" type="submit" value="Добавить">
+</div>
 </body>
 </html>

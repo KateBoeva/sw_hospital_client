@@ -17,11 +17,11 @@ function register() {
         crossOrigin: true,
         datatype:"json",
         crossDomain: true,
-        url: "http://localhost:8080/semestr-1-2.0-SNAPSHOT/register",
+        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/register",
         data: JSON.stringify(loginInfo),
         contentType:'application/json; charset=utf-8'
     }).done(function(tokenObject){
-        window.location.href = "auth.html";
+        window.location.href = "sign_in.html";
     }).fail(function(){
         alert("Логин уже занят")
     });

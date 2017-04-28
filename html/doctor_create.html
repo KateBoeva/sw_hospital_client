@@ -3,50 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить врача</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/doctor_create.js"></script>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <div class="logo">Добавить врача</div>
-    <div class="btn">
-        <!--<a href="index.html"><button class="back">Back</button></a>-->
-    </div>
 </header>
 <br>
-<form class="all_form">
+<div class="all_form">
     <table class="all_table">
         <tr>
             <td>Фамилия:</td>
-            <td><input type="text"></td>
+            <td><input class="surname" type="text"></td>
         </tr>
         <tr>
             <td>Имя:</td>
-            <td><input type="text"></td>
+            <td><input class="name" type="text"></td>
         </tr>
         <tr>
             <td>Отчество:</td>
-            <td><input type="text"></td>
+            <td><input class="patronymic" type="text"></td>
         </tr>
         <tr>
             <td>Специализация:</td>
-            <td><input type="text"></td>
+            <td><input class="specialization" type="text"></td>
         </tr>
         <tr>
             <td>Стаж работы:</td>
-            <td><input type="text"></td>
+            <td><input class="experience" type="text"></td>
         </tr>
         <tr>
             <td>Регалии:</td>
-            <td><input type="text"></td>
+            <td><input class="regalies" type="text"></td>
         </tr>
         <tr>
             <td>Телефон:</td>
-            <td><input type="text"></td>
+            <td><input class="phone" type="text"></td>
         </tr>
     </table>
     <br>
-    <input type="submit" value="Добавить">
-</form>
+    <input class="create" type="submit" value="Добавить">
+</div>
 </body>
 </html>

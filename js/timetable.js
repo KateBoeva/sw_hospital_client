@@ -1,21 +1,39 @@
+var token, status, cityId, hospitalId, doctorId, title;
+
 $(document).ready(function() {
-    var token = getCookie("token");
-    var status = getCookie("status");
-    if(token == null || token == ""){
-        window.location.href = "auth.html";
-    }
-    var cityId = getCookie("cityId");
-    var hospitalId = getCookie("hospitalId");
-    var doctorId = getCookie("doctorId");
-    var title = getCookie("title");
+    checkAuth();
+    requestTimetable();
+    title = getCookie("title");
     $('#high').append(title);
+});
+
+function checkAuth() {
+    token = getCookie("token");
+    status = getCookie("status");
+    if(token == null || token == ""){
+        window.location.href = "sign_in.html";
+    } else if(status == "1"){
+        document.getElementById("sign_in").style.display = "none";
+        document.getElementById("sign_out").style.display = "";
+        document.getElementById("create").style.display = "";
+    } else {
+        document.getElementById("sign_in").style.display = "none";
+        document.getElementById("sign_out").style.display = "";
+        document.getElementById("create").style.display = "none";
+    }
+}
+
+function requestTimetable() {
+    cityId = getCookie("cityId");
+    hospitalId = getCookie("hospitalId");
+    doctorId = getCookie("doctorId");
     $.ajax({
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        data: JSON.stringify("edfvdgf"),
+        data: JSON.stringify(token),
         contentType:'application/json; charset=utf-8',
-        url: "http://localhost:8080/semestr-1-2.0-SNAPSHOT/timetable/" + doctorId + "/" + token
+        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/timetable/" + doctorId + "?token=" + token
     }).done(function(timetable){
         $('.timetable').append("<tr>" +
             "<td>"+timetable.monday+"</td>" +
@@ -29,15 +47,7 @@ $(document).ready(function() {
     }).fail(function(){
         console.log("no");
     });
-    $('#logout').click(function(event, ui){
-        document.cookie = "cityId=";
-        document.cookie = "hospitalId=";
-        document.cookie = "doctorId=";
-        document.cookie = "token=";
-        document.cookie = "status=";
-        window.location.href = "cities.html";
-    });
-});
+}
 
 function getCookie(name) {
     var cookie = " " + document.cookie;

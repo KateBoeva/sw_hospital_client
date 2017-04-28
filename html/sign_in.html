@@ -2,15 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация</title>
+    <title>Авторизация</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="../js/register.js"></script>
+    <script src="../js/sign_in.js"></script>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-<h1 class="high"><strong>Регистрация</strong></h1>
+<header>
+    <div class="logo">Авторизация</div>
+    <div class="btn">
+        <!--<a href="index.html"><button class="back">Back</button></a>-->
+    </div>
+</header>
+<br>
 <div class="all_form">
-    <table class="auth_table">
+    <table class="all_table">
         <tr>
             <td>Логин:</td>
             <td><input class="login" type="text"></td>
@@ -20,7 +26,9 @@
             <td><input class="password" type="password"></td>
         </tr>
     </table>
-    <input class="register" type="submit" value="Зарегистрироваться">
+    <br>
+    <input class="auth" type="submit" value="Войти">
 </div>
+<a href="sign_up.html" id="register" class="addCity"><button class="create_btn">Registrtion</button></a>
 </body>
 </html>

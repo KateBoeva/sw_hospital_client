@@ -1,27 +1,39 @@
+var token, status, cityId, title;
+
 $(document).ready(function() {
-    var token = getCookie("token");
-    var status = getCookie("status");
+    checkAuth();
+    requestHospitals();
+    title = getCookie("title");
+    $('#high').append(title);
+    document.cookie = "hospitalId=";
+    document.cookie = "doctorId=";
+});
+
+function checkAuth() {
+    token = getCookie("token");
+    status = getCookie("status");
     if(token == null || token == ""){
+        document.getElementById("sign_in").style.display = "";
+        document.getElementById("sign_out").style.display = "none";
         document.getElementById("create").style.display = "none";
-        document.getElementById("logout").style.display = "none";
-        document.getElementById("auth").style.display = "";
     } else if(status == "1"){
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("logout").style.display = "";
+        document.getElementById("sign_in").style.display = "none";
+        document.getElementById("sign_out").style.display = "";
         document.getElementById("create").style.display = "";
     } else {
-        document.getElementById("auth").style.display = "none";
-        document.getElementById("logout").style.display = "";
+        document.getElementById("sign_in").style.display = "none";
+        document.getElementById("sign_out").style.display = "";
         document.getElementById("create").style.display = "none";
     }
-    var cityId = getCookie("cityId");
-    var title = getCookie("title");
-    $('#high').append(title);
+}
+
+function requestHospitals() {
+    cityId = getCookie("cityId");
     $.ajax({
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-2.0-SNAPSHOT/health/cities/" + cityId + "/hospitals"
+        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals"
     }).done(function(hospitals){
         for(var i = 0; i < hospitals.length; i++){
             $('.hospitals').append("<tr>" +
@@ -38,15 +50,7 @@ $(document).ready(function() {
     }).fail(function(){
         console.log("no");
     });
-    $('#logout').click(function(event, ui){
-        document.cookie = "cityId=";
-        document.cookie = "hospitalId=";
-        document.cookie = "doctorId=";
-        document.cookie = "token=";
-        document.cookie = "status=";
-        window.location.href = "cities.html";
-    });
-});
+}
 
 function getCookie(name) {
     var cookie = " " + document.cookie;

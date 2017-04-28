@@ -3,29 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Добавить больницу</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../js/hospital_create.js"></script>
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 <header>
     <div class="logo">Добавить больницу</div>
-    <div class="btn">
-        <!--<a href="index.html"><button class="back">Back</button></a>-->
-    </div>
 </header>
 <br>
-<form class="all_form">
+<div class="all_form">
     <table class="all_table">
         <tr>
             <td>Больница:</td>
-            <td><input type="text"></td>
+            <td><input class="name" type="text"></td>
         </tr>
         <tr>
             <td>Адрес:</td>
-            <td><input type="text"></td>
+            <td><input class="address" type="text"></td>
         </tr>
     </table>
     <br>
-    <input type="submit" value="Добавить">
-</form>
+    <input class="create" type="submit" value="Добавить">
+</div>
 </body>
 </html>
