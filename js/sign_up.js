@@ -17,7 +17,7 @@ function register() {
         crossOrigin: true,
         datatype:"json",
         crossDomain: true,
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/register",
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/register",
         data: JSON.stringify(loginInfo),
         contentType:'application/json; charset=utf-8'
     }).done(function(tokenObject){

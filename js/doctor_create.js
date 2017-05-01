@@ -34,7 +34,7 @@ function create() {
         crossOrigin: true,
         datatype:"json",
         crossDomain: true,
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors?token=" + token,
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors?token=" + token,
         data: JSON.stringify(doctor),
         contentType:'application/json; charset=utf-8'
     }).done(function(){

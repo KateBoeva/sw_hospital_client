@@ -1,4 +1,4 @@
-var token, status, cityId, title;
+var token, status, cityId, title, mHospitals;
 
 $(document).ready(function() {
     checkAuth();
@@ -7,7 +7,29 @@ $(document).ready(function() {
     $('#high').append(title);
     document.cookie = "hospitalId=";
     document.cookie = "doctorId=";
+    search();
 });
+
+function search() {
+    $('input[type="search"]').keyup(function(){
+        var search = $(this).val()
+        $(".hospitals").find("tr:gt(0)").remove();
+        for(var i = 0; i < mHospitals.length; i++){
+            if(mHospitals[i].name.toLowerCase().indexOf(search) != -1) {
+                $('.hospitals').append("<tr>" +
+                    "<td><p class='name' id='" + mHospitals[i].id + "'>" + mHospitals[i].name + "</p></td>" +
+                    "<td>" + mHospitals[i].address + "</td>" +
+                    "</tr>");
+            }
+        }
+        $('.name').click(function(event, ui){
+            console.log("choose");
+            document.cookie = "hospitalId=" + $(this).attr('id');
+            document.cookie = "title=" + $(this).html();
+            window.location.href = "doctors.html";
+        });
+    });
+}
 
 function checkAuth() {
     token = getCookie("token");
@@ -33,8 +55,9 @@ function requestHospitals() {
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals"
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals"
     }).done(function(hospitals){
+        mHospitals = hospitals;
         for(var i = 0; i < hospitals.length; i++){
             $('.hospitals').append("<tr>" +
                 "<td><p class='name' id='" + hospitals[i].id + "'>"+hospitals[i].name+"</p></td>" +

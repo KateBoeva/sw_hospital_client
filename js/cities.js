@@ -1,10 +1,33 @@
+var mCities;
+
 $(document).ready(function() {
     checkAuth();
     requestCities();
     document.cookie = "cityId=";
     document.cookie = "hospitalId=";
     document.cookie = "doctorId=";
+    search();
 });
+
+function search() {
+    $('input[type="search"]').keyup(function(){
+        var search = $(this).val()
+        $(".cities").find("tr:gt(0)").remove();
+        for(var i = 0; i < mCities.length; i++){
+            if(mCities[i].name.toLowerCase().indexOf(search) != -1) {
+                $('.cities').append("<tr>" +
+                    "<td><p class='name' id='" + mCities[i].id + "'>" + mCities[i].name + "</p></td>" +
+                    "</tr>");
+            }
+        }
+        $('.name').click(function(event, ui){
+            console.log("choose");
+            document.cookie = "cityId=" + $(this).attr('id');
+            document.cookie = "title=" + $(this).html();
+            window.location.href = "hospitals.html";
+        });
+    });
+}
 
 function checkAuth() {
     token = getCookie("token");
@@ -29,8 +52,9 @@ function requestCities() {
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities"
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities"
     }).done(function(cities){
+        mCities = cities;
         for(var i = 0; i < cities.length; i++){
             $('.cities').append("<tr>" +
                 "<td><p class='name' id='" + cities[i].id + "'>"+cities[i].name+"</p></td>" +

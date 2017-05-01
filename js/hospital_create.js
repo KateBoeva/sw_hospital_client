@@ -23,7 +23,7 @@ function create() {
         crossOrigin: true,
         datatype:"json",
         crossDomain: true,
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals?token=" + token,
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals?token=" + token,
         data: JSON.stringify(hospital),
         contentType:'application/json; charset=utf-8'
     }).done(function(){

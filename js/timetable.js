@@ -33,7 +33,7 @@ function requestTimetable() {
         datatype:"json",
         data: JSON.stringify(token),
         contentType:'application/json; charset=utf-8',
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token
     }).done(function(timetable){
         $('.timetable').append("<tr>" +
             "<td>"+timetable.monday+"</td>" +

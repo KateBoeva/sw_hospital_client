@@ -1,4 +1,4 @@
-var token, status, cityId, hospitalId, title;
+var token, status, cityId, hospitalId, title, mDoctors;
 
 $(document).ready(function() {
     checkAuth();
@@ -6,7 +6,36 @@ $(document).ready(function() {
     title = getCookie("title");
     $('#high').append(title);
     document.cookie = "doctorId=";
+    search();
 });
+
+function search() {
+    $('input[type="search"]').keyup(function(){
+        var search = $(this).val()
+        $(".doctors").find("tr:gt(0)").remove();
+        for(var i = 0; i < mDoctors.length; i++){
+            if(mDoctors[i].surname.toLowerCase().indexOf(search) != -1 ||
+                mDoctors[i].name.toLowerCase().indexOf(search) != -1 ||
+                mDoctors[i].patronymic.toLowerCase().indexOf(search) != -1) {
+                $('.doctors').append("<tr>" +
+                    "<td><p class='name' id='" + mDoctors[i].id + "'>" + mDoctors[i].surname + "</p></td>" +
+                    "<td>" + mDoctors[i].name + "</td>" +
+                    "<td>" + mDoctors[i].patronymic + "</td>" +
+                    "<td>" + mDoctors[i].specialization + "</td>" +
+                    "<td>" + mDoctors[i].experience + "</td>" +
+                    "<td>" + mDoctors[i].regalies + "</td>" +
+                    "<td>" + mDoctors[i].phone + "</td>" +
+                    "</tr>");
+            }
+        }
+        $('.name').click(function(event, ui){
+            console.log("choose");
+            document.cookie = "doctorId=" + $(this).attr('id');
+            document.cookie = "title=" + $(this).html();
+            window.location.href = "timetable.html";
+        });
+    });
+}
 
 function checkAuth() {
     token = getCookie("token");
@@ -33,8 +62,9 @@ function requestDoctors() {
         method: "GET",
         crossOrigin: true,
         datatype:"json",
-        url: "http://localhost:8080/semestr-1-3.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors"
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors"
     }).done(function(doctors){
+        mDoctors = doctors;
         for(var i = 0; i < doctors.length; i++){
             $('.doctors').append("<tr>" +
                 "<td><p class='name' id='" + doctors[i].id + "'>"+doctors[i].surname+"</p></td>" +
