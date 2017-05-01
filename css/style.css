@@ -20,6 +20,15 @@ table {
     color: #2f2f2f;
 }
 
+.name {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.name:hover {
+    text-decoration: underline;
+}
+
 .all_form {
     border: solid 1px;
     border-radius: 3px;
@@ -29,7 +38,7 @@ table {
 }
 
 .big_table {
-    width: 1000px;
+    width: 1050px;
 }
 
 .big_header {
