@@ -13,21 +13,7 @@ $(document).ready(function() {
 function search() {
     $('input[type="search"]').keyup(function(){
         var search = $(this).val()
-        $(".hospitals").find("tr:gt(0)").remove();
-        for(var i = 0; i < mHospitals.length; i++){
-            if(mHospitals[i].name.toLowerCase().indexOf(search) != -1) {
-                $('.hospitals').append("<tr>" +
-                    "<td><p class='name' id='" + mHospitals[i].id + "'>" + mHospitals[i].name + "</p></td>" +
-                    "<td>" + mHospitals[i].address + "</td>" +
-                    "</tr>");
-            }
-        }
-        $('.name').click(function(event, ui){
-            console.log("choose");
-            document.cookie = "hospitalId=" + $(this).attr('id');
-            document.cookie = "title=" + $(this).html();
-            window.location.href = "doctors.html";
-        });
+        fillData(search);
     });
 }
 
@@ -58,21 +44,52 @@ function requestHospitals() {
         url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals"
     }).done(function(hospitals){
         mHospitals = hospitals;
-        for(var i = 0; i < hospitals.length; i++){
-            $('.hospitals').append("<tr>" +
-                "<td><p class='name' id='" + hospitals[i].id + "'>"+hospitals[i].name+"</p></td>" +
-                "<td>"+hospitals[i].address+"</td>" +
-                "</tr>");
-        }
-        $('.name').click(function(event, ui){
-            console.log("choose");
-            document.cookie = "hospitalId=" + $(this).attr('id');
-            document.cookie = "title=" + $(this).html();
-            window.location.href = "doctors.html";
-        });
+        fillData("");
     }).fail(function(){
         console.log("no");
     });
+}
+
+function deleteHospital(hospitalId) {
+    $.ajax({
+        method: "DELETE",
+        crossOrigin: true,
+        datatype:"json",
+        url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "?token=" + token,
+        contentType:'application/json; charset=utf-8'
+    }).done(function(hospitals){
+        mHospitals = hospitals;
+        fillData("");
+    }).fail(function(){
+        console.log("no");
+    });
+}
+
+function fillData(search) {
+    $(".hospitals").find("tr:gt(0)").remove();
+    for(var i = 0; i < mHospitals.length; i++){
+        if(mHospitals[i].name.toLowerCase().indexOf(search) != -1) {
+            $('.hospitals').append("<tr>" +
+                "<td><p class='name' id='" + mHospitals[i].id + "'>" + mHospitals[i].name + "</p></td>" +
+                "<td>" + mHospitals[i].address + "</td>" +
+                "<td><p class='delete' id='0" + mHospitals[i].id + "'>x</p></td>" +
+                "</tr>");
+        }
+    }
+    $('.name').click(function(event, ui){
+        console.log("choose");
+        document.cookie = "hospitalId=" + $(this).attr('id');
+        document.cookie = "title=" + $(this).html();
+        window.location.href = "doctors.html";
+    });
+    $('.delete').click(function(event, ui){
+        var id = $(this).attr('id');
+        console.log("delete " + id[1]);
+        deleteHospital(id.substring(1));
+    });
+    if(status == null || status != 1){
+        document.getElementsByClassName("delete").style.display = "none";
+    }
 }
 
 function getCookie(name) {
