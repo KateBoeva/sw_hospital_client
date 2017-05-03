@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 function search() {
     $('input[type="search"]').keyup(function(){
-        var search = $(this).val()
+        var search = $(this).val();
         fillData(search);
     });
 }
