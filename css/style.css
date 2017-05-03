@@ -8,8 +8,8 @@ body {
     margin: 0 auto;
 }
 
-.high {
-    /*width: 20%;*/
+#sign_out {
+    margin-top: 10px;
 }
 
 td {
@@ -20,17 +20,21 @@ table {
     color: #2f2f2f;
 }
 
-.name {
+#name {
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.cursor {
     cursor: pointer;
     font-weight: bolder;
 }
 
-.name:hover {
+.cursor:hover {
     text-decoration: underline;
 }
 
 .search_input {
-    /*float: right;*/
     display: flex;
     justify-content: center;
 }
@@ -49,6 +53,14 @@ table {
 
 .big_header {
     width: 1100px;
+}
+
+.middle_table {
+    width: 500px;
+}
+
+.middle_header {
+    width: 700px;
 }
 
 .all_table td {
@@ -75,7 +87,7 @@ table {
 }
 
 .create {
-    margin-left: 40.8%;
+    margin-left: 50%;
     width: 100px;
 }
 
@@ -88,6 +100,10 @@ table {
 .delete {
     border: solid 1px #9e9e9e;
     border-radius: 50%;
+    height: 12px;
+    width: 12px;
+    font-size: 10px;
+    text-align: center;
     background-color: #FFFFFF;
 }
 
@@ -98,7 +114,6 @@ table {
 input {
     height: 25px;
     margin: 0 auto;
-
 }
 
 #register {
@@ -177,4 +192,27 @@ input[type="submit"]:hover, .create_btn:hover {
 
 .cities td, .doctors td, .hospitals td {
     padding: 10px;
+}
+
+.timetable {
+    border: solid 1px lightgray;
+}
+
+.timetable td {
+    padding: 10px;
+    border: solid 1px lightgray;
+    width: 120px;
+}
+
+.onStart {
+    position: absolute;
+    top: 8px;
+    right: 410px;
+}
+
+.onStart_btn {
+    border-radius: 50%;
+    background-color: #a7e0fb;
+    border: solid 1px #1a7891;
+    font-size: 15px;
 }

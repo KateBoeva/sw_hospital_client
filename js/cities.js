@@ -68,7 +68,7 @@ function fillData(search) {
     for(var i = 0; i < mCities.length; i++){
         if(mCities[i].name.toLowerCase().indexOf(search) != -1) {
             $('.cities').append("<tr>" +
-                "<td><p class='name' id='" + mCities[i].id + "'>" + mCities[i].name + "</p></td>" +
+                "<td><p class='name cursor' id='" + mCities[i].id + "'>" + mCities[i].name + "</p></td>" +
                 "<td><p class='delete' id='0" + mCities[i].id + "'>x</p></td>" +
                 "</tr>");
         }
@@ -85,7 +85,10 @@ function fillData(search) {
         deleteCity(id.substring(1));
     });
     if(status == null || status != 1){
-        document.getElementsByClassName("delete").style.display = "none";
+        var elems = document.getElementsByClassName('delete');
+        for (var i = 0; i < elems.length; i += 1){
+            elems[i].style.display = 'none';
+        }
     }
 }
 
@@ -99,7 +102,7 @@ function getCookie(name) {
         offset = cookie.indexOf(search);
         if (offset != -1) {
             offset += search.length;
-            end = cookie.indexOf(";", offset)
+            end = cookie.indexOf(";", offset); // this ;
             if (end == -1) {
                 end = cookie.length;
             }

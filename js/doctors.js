@@ -72,7 +72,7 @@ function fillData(search) {
             mDoctors[i].name.toLowerCase().indexOf(search) != -1 ||
             mDoctors[i].patronymic.toLowerCase().indexOf(search) != -1) {
             $('.doctors').append("<tr>" +
-                "<td><p class='name' id='" + mDoctors[i].id + "'>" + mDoctors[i].surname + "</p></td>" +
+                "<td><p class='name cursor' id='" + mDoctors[i].id + "'>" + mDoctors[i].surname + "</p></td>" +
                 "<td>" + mDoctors[i].name + "</td>" +
                 "<td>" + mDoctors[i].patronymic + "</td>" +
                 "<td>" + mDoctors[i].specialization + "</td>" +
@@ -95,7 +95,10 @@ function fillData(search) {
         deleteDoctor(id.substring(1));
     });
     if(status == null || status != 1){
-        document.getElementsByClassName("delete").style.display = "none";
+        var elems = document.getElementsByClassName('delete');
+        for (var i = 0; i < elems.length; i += 1){
+            elems[i].style.display = 'none';
+        }
     }
 }
 

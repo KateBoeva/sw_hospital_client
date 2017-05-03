@@ -11,27 +11,30 @@
 <body>
 <header class="big_header">
     <div id="high" class="logo"></div>
+    <a href="cities.html" class="onStart"><button class="onStart_btn" about="На главную">∆</button></a>
     <div class="search_input">
-        <input type="search" class="search">
+        <input type="search" class="search" id="search">
+        <a href="sign_in.html"><input type="submit" value="Войти" id="sign_in"></a>
+        <input type="submit" value="Выйти" id="sign_out">
     </div>
 </header>
 <br>
 <div class="all_form big_table">
-    <table class="timetable" cellspacing="5">
+    <table class="timetable">
         <tr class="header">
-            <td class="title">Monday</td>
-            <td class="title">Tuesday</td>
-            <td class="title">Wednesday</td>
-            <td class="title">Thursday</td>
-            <td class="title">Friday</td>
-            <td class="title">Saturday</td>
-            <td class="title">Sunday</td>
+            <td class="title">Понедельник</td>
+            <td class="title">Вторник</td>
+            <td class="title">Среда</td>
+            <td class="title">Четверг</td>
+            <td class="title">Пятница</td>
+            <td class="title">Суббота</td>
+            <td class="title">Воскресенье</td>
         </tr>
     </table>
 
     <a id="create" href="timetable_change.html"><button class="link_btn">Изменить расписание</button></a>
-    <a id="sign_in" href="sign_in.html"><button class="link_btn">Войти</button></a>
-    <a id="sign_out"><button class="link_btn">Выйти</button></a>
+    <!--<a id="sign_in" href="sign_in.html"><button class="link_btn">Войти</button></a>-->
+    <!--<a id="sign_out"><button class="link_btn">Выйти</button></a>-->
 </div>
 </body>
 </html>

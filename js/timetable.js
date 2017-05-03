@@ -35,7 +35,7 @@ function requestTimetable() {
         contentType:'application/json; charset=utf-8',
         url: "http://localhost:8080/semestr-1-4.0-SNAPSHOT/health/cities/" + cityId + "/hospitals/" + hospitalId + "/doctors/" + doctorId + "/timetable?token=" + token
     }).done(function(timetable){
-        $('.timetable').append("<tr>" +
+        $('.timetable').append("<tr class='content'>" +
             "<td>"+timetable.monday+"</td>" +
             "<td>"+timetable.tuesday+"</td>" +
             "<td>"+timetable.wednesday+"</td>" +

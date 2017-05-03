@@ -70,7 +70,7 @@ function fillData(search) {
     for(var i = 0; i < mHospitals.length; i++){
         if(mHospitals[i].name.toLowerCase().indexOf(search) != -1) {
             $('.hospitals').append("<tr>" +
-                "<td><p class='name' id='" + mHospitals[i].id + "'>" + mHospitals[i].name + "</p></td>" +
+                "<td><p class='name cursor' id='" + mHospitals[i].id + "'>" + mHospitals[i].name + "</p></td>" +
                 "<td>" + mHospitals[i].address + "</td>" +
                 "<td><p class='delete' id='0" + mHospitals[i].id + "'>x</p></td>" +
                 "</tr>");
@@ -88,7 +88,10 @@ function fillData(search) {
         deleteHospital(id.substring(1));
     });
     if(status == null || status != 1){
-        document.getElementsByClassName("delete").style.display = "none";
+        var elems = document.getElementsByClassName('delete');
+        for (var i = 0; i < elems.length; i += 1){
+            elems[i].style.display = 'none';
+        }
     }
 }
 
